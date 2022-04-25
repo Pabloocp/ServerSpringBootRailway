@@ -17,10 +17,10 @@ public class Ejercicio2 {
         return "Bienvenido al servidor backend 2";
     }
 
-    @GetMapping("/contar/{name}")
-    public String EsVocalCons(@PathVariable String name){
-       int[] vocalesCons = Utils.ContarVocales(name);
-       return "Hay"+ vocalesCons[0] + " vocales y " + vocalesCons[1] + " consonantes";
+    @GetMapping("/contar/{palabra}")
+    public String EsVocalCons(@PathVariable String palabra){
+       int[] vocalesCons = Utils.ContarVocales(palabra);
+       return "Hay "+ vocalesCons[0] + " vocales y " + vocalesCons[1] + " consonantes";
     }
 
 }
