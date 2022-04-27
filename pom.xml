@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.5</version>
-		<relativePath/>../ejercicio2
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ejercio2</groupId>
 	<artifactId>ejercio2</artifactId>
@@ -39,9 +39,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
 
-		<plugin>
+			<plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-compiler-plugin</artifactId>
 		<version>3.8.0</version>
@@ -50,6 +49,9 @@
 			<target>11</target>
 		</configuration>
 	</plugin>
+		</plugins>
+
+		
 
 	</build>
 
