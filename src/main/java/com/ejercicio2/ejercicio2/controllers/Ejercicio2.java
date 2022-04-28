@@ -41,16 +41,35 @@ public class Ejercicio2 {
         ArrayList<Gato> gatos = gatoBD.listaVeterinaria();
         String listado = "";
         for(Gato cat: gatos){
-            listado += cat.getId();
+            listado += cat.toString();
             
             listado += "<br/>";
         }
         return listado;
     }
 
-    @PostMapping("/insertaGatito")
+    @GetMapping("/insertaGatito")
     public String insertaGatito(@RequestParam Long id,@RequestParam String raza,@RequestParam int edad) {
-       return "terminar";
+       Gato gatito = new Gato();
+        boolean insertable = true;
+       ArrayList<Gato> gatos = gatoBD.listaVeterinaria();
+       for(Gato cat: gatos){
+        if(cat.getId().equals(id)){
+            insertable = false;
+        }
+    }
+      if(insertable){
+        gatito.setId(id);
+        gatito.setRaza(raza);
+       gatito.setEdad(edad);
+       gatoBD.guardarGatito(gatito);
+       return "Gatito guardado con exito";
+      }else{
+          return "Gatito ya existente";
+      }
+
+      
+        
     }
  
    
