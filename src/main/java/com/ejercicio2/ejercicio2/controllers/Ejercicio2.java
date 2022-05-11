@@ -2,17 +2,20 @@ package com.ejercicio2.ejercicio2.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Map;
+
 
 import com.ejercicio2.ejercicio2.models.Gato;
-import com.ejercicio2.ejercicio2.repositories.GatoRepository;
+import com.ejercicio2.ejercicio2.models.Traduccion;
+import com.ejercicio2.ejercicio2.models.ResponseData;
+
 import com.ejercicio2.ejercicio2.services.GatosBDService;
+import com.ejercicio2.ejercicio2.services.TraduccionService;
 import com.ejercicio2.ejercicio2.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -22,6 +25,9 @@ public class Ejercicio2 {
    // ES UN SERVICIO
     @Autowired
     GatosBDService gatoBD;
+  
+    @Autowired
+    TraduccionService traduccionService;
 
 
     @GetMapping("/")
@@ -35,6 +41,11 @@ public class Ejercicio2 {
        return "Hay "+ vocalesCons[0] + " vocales y " + vocalesCons[1] + " consonantes";
     }
 
+    @GetMapping("/traduce/{texto}")
+    public String getRyMortyRandCharacter(@PathVariable String texto){
+        Traduccion c = traduccionService.getTraduccionFromAPI(texto);
+        return  c.responseData.translatedText ;
+    }
 
     @GetMapping("/listarGatitos")
     public String gatitos() {
