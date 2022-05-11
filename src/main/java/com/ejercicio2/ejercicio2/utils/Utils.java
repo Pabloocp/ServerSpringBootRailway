@@ -22,4 +22,9 @@ public class Utils {
          return resultado;
 
      }
+
+     public static String tuUpperCase(String p){
+         String resultado = p.toUpperCase();
+         return resultado;
+     }
 }

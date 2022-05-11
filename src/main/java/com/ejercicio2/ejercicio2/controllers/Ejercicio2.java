@@ -41,6 +41,12 @@ public class Ejercicio2 {
        return "Hay "+ vocalesCons[0] + " vocales y " + vocalesCons[1] + " consonantes";
     }
 
+
+    @GetMapping("/{low}")
+    public String toUpperCase(@PathVariable String low){
+       return  Utils.tuUpperCase(low);
+    }
+
     @GetMapping("/traduce/{texto}")
     public String getRyMortyRandCharacter(@PathVariable String texto){
         Traduccion c = traduccionService.getTraduccionFromAPI(texto);
