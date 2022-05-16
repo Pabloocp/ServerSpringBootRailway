@@ -2,7 +2,7 @@ package com.ejercicio2.ejercicio2.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-
+import java.util.Map;
 
 import com.ejercicio2.ejercicio2.models.Gato;
 import com.ejercicio2.ejercicio2.models.Traduccion;
@@ -15,7 +15,7 @@ import com.ejercicio2.ejercicio2.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -88,6 +88,17 @@ public class Ejercicio2 {
       
         
     }
+
+    @PostMapping("/insertarGatito2")
+   public String addJoke(@RequestParam Map<String, String> body){
+        String raza =  body.get("raza");
+        String edad =  body.get("edad");
+        Gato gatito = new Gato();
+        gatito.setRaza(raza);
+        gatito.setEdad(Integer.parseInt(edad));
+        gatoBD.guardarGatito(gatito);
+        return "Gatito guardado";
+   }
  
    
 }
