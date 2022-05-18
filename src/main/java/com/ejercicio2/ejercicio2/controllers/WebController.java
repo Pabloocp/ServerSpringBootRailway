@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebController {
     @RequestMapping("/formulariogatito")
     public String getFormularioGato(Model model){
-        return "formularioInsercionChiste";
+        return "formularioGatitos";
     }
 }
